@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import React from 'react';
-import { getAuth, createUserWithEmailAndPassword, updateCurrentUser, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, updateCurrentUser, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth'
 import app from "../Firebase/Firebase.config";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -21,6 +21,11 @@ const registerWithEmail = (email,password)=>{
 
 }
 
+// Handleing github sign in
+const gitprovider = new GithubAuthProvider()
+const github=()=>{
+  return signInWithPopup(Auth,gitprovider)
+}
 
 // Handleing google sign in
 const provider = new GoogleAuthProvider()
@@ -66,7 +71,8 @@ const contextValues = {registerWithEmail,
                       loading,
                       SetLoading,
                       signout,
-                      Goolge}
+                      Goolge,
+                    github}
     return (
       <UserContext.Provider value={contextValues}>
         {children}

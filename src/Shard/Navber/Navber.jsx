@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../ContextApi/UserContextApi';
+import Avater from '../../Asstes/Images/User-avatar.svg.png'
+import Logo from '../../Asstes/Images/logo.png'
 
 const Navber = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,75 +26,67 @@ const Navber = () => {
           {/* Navber section starts frmo here */}
                     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                         <div className="relative flex items-center justify-between">
-                            <a
-                            href="/"
-                            aria-label="Company"
-                            title="Company"
+                            <Link
+                            to='/'
+                            aria-label="Code With Maruf"
+                            title="Code With Maruf"
                             className="inline-flex items-center"
                             >
-                            <svg
-                                className="w-8 text-purple-400"
-                                viewBox="0 0 24 24"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeMiterlimit="10"
-                                stroke="currentColor"
-                                fill="none"
-                            >
-                                <rect x="3" y="1" width="7" height="12" />
-                                <rect x="3" y="17" width="7" height="6" />
-                                <rect x="14" y="1" width="7" height="6" />
-                                <rect x="14" y="11" width="7" height="12" />
-                            </svg>
+                           <img src={Logo} alt=""  className='w-[30%]'/>
                             <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                                Company
+                                Code With Maruf
                             </span>
-                            </a>
+                            </Link>
                             <ul className="flex items-center hidden space-x-8 lg:flex">
                            
                             <li>
-                                <a
-                                href="/"
+                                <Link
+                                to='/courses'
                                 aria-label="Our product"
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                 >
                                 Courses
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                href="/"
+                                <Link
+                               to='/blog'
                                 aria-label="Blog"
                                 title="Blog"
                                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                 >
                                 Blog
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                href="/"
+                                <Link 
+                                to='/faq'
                                 aria-label="FAQ"
                                 title="FAQ"
                                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                 >
                                 FAQ
-                                </a>
+                                </Link>
                             </li>
                               {/* Log in link */}
                             {
-                                currentUser?.uid ? <><li>
+                                currentUser?.uid ? <>
+                                 <li >
+                                        <Link title={currentUser?.displayName ? currentUser.displayName : 'No name'} >
+                                        {currentUser?.photoURL  ? <img className='w-[50px] h-[50px] rounded-full' src={currentUser.photoURL} alt="" />: <img className='rounded-full h-[50px] w-[50px] '  src={Avater} alt='user Profile'/>}
+                                        
+                                        </Link>
+                                       
+
+                                    </li>
+                                <li>
                                     <Link onClick={handleSignout} 
                                     className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                     aria-label="Sign Out"
                                     title="Sign Out">Sign Out</Link>
                                     </li>
-                                    <li>
-                                        {currentUser.email}
-
-                                    </li>
+                                   
                                     </>
                                     :  <>
                                     <li>
@@ -153,7 +147,7 @@ const Navber = () => {
                                 </svg>
                             </button>
                             {isMenuOpen && (
-                                <div className="absolute top-0 left-0 w-full">
+                                <div className="absolute top-0 left-0 w-full z-50">
                                 <div className="p-5 bg-white border rounded shadow-sm">
                                     <div className="flex items-center justify-between mb-4">
                                     <div>
@@ -163,23 +157,9 @@ const Navber = () => {
                                         title="Company"
                                         className="inline-flex items-center"
                                         >
-                                        <svg
-                                            className="w-8 text-purple-400"
-                                            viewBox="0 0 24 24"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeMiterlimit="10"
-                                            stroke="currentColor"
-                                            fill="none"
-                                        >
-                                            <rect x="3" y="1" width="7" height="12" />
-                                            <rect x="3" y="17" width="7" height="6" />
-                                            <rect x="14" y="1" width="7" height="6" />
-                                            <rect x="14" y="11" width="7" height="12" />
-                                        </svg>
+                                         <img src={Logo} alt=""  className='w-[30%]'/>
                                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                                            Company
+                                            Code With Maruf
                                         </span>
                                         </a>
                                     </div>
@@ -202,55 +182,77 @@ const Navber = () => {
                                     <nav>
                                     <ul className="space-y-4">
                                         <li>
-                                        <a
-                                            href="/"
-                                            aria-label="Our product"
-                                            title="Our product"
-                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
-                                        >
-                                            Product
-                                        </a>
-                                        </li>
-                                        <li>
-                                        <a
-                                            href="/"
-                                            aria-label="Our product"
-                                            title="Our product"
+                                        <Link
+                                            to='/courses'
+                                            aria-label="Our Courses"
+                                            title="Courses"
                                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                         >
                                             Courses
-                                        </a>
+                                        </Link>
                                         </li>
                                         <li>
-                                        <a
-                                            href="/"
+                                        <Link
+                                            to='/blog'
+                                            aria-label="Our product"
+                                            title="Our product"
+                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                        >
+                                            Blog
+                                        </Link>
+                                        </li>
+                                        <li>
+                                        <Link
+                                          to='/faq'
                                             aria-label="Blog"
                                             title="Blog"
                                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                         >
-                                            Blog
-                                        </a>
+                                           FAQ
+                                        </Link>
                                         </li>
-                                        <li>
-                                        <a
-                                            href="/"
-                                            aria-label="FAQ"
-                                            title="FAQ"
-                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                        
+                                        {
+                                currentUser?.uid ? <>
+                                <li className='flex items-center'>
+                                        <Link title={currentUser?.displayName ? currentUser.displayName : 'No name'} className='mr-2' >
+
+                                        {currentUser?.photoURL  ? <img className='w-[50px] h-[50px] rounded-full' src={currentUser.photoURL} alt="" />: <img className='rounded-full h-[50px] w-[50px] '  src={Avater} alt='user Profile'/>}
+                                        
+                                        </Link>
+                                       
+
+                                    <Link onClick={handleSignout} 
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                    aria-label="Sign Out"
+                                    title="Sign Out">Sign Out</Link>
+                                    </li>
+                                    
+                                    </>
+                                    :  <>
+                                    <li>
+                                    <Link
+                                        to="/login"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                        aria-label="Log-In"
+                                        title="Log-In"
                                         >
-                                            FAQ
-                                        </a>
-                                        </li>
-                                        <li>
-                                        <a
-                                            href="/"
-                                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-                                            aria-label="Sign up"
-                                            title="Sign up"
+                                        Log-In
+                                        </Link>
+                                    </li>
+                                   
+                                    <li>
+                                    <Link
+                                        to="/signup"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                        aria-label="Sign up"
+                                        title="Sign up"
                                         >
-                                            Sign up
-                                        </a>
-                                        </li>
+                                        Sign up
+                                        </Link>
+                                    </li>
+                                    </>
+                            }
                                     </ul>
                                     </nav>
                                 </div>
