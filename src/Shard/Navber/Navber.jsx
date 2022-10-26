@@ -1,8 +1,22 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../ContextApi/UserContextApi';
 
 const Navber = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const {currentUser,signout} = useContext(UserContext)
+    const handleSignout =() =>{
+        signout()
+        .then(data=>{
+            console.log(data);
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+    }
+    console.log(currentUser);
 
     return (
         
@@ -36,6 +50,7 @@ const Navber = () => {
                             </span>
                             </a>
                             <ul className="flex items-center hidden space-x-8 lg:flex">
+                           
                             <li>
                                 <a
                                 href="/"
@@ -43,47 +58,75 @@ const Navber = () => {
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                 >
-                                Product
+                                Courses
                                 </a>
                             </li>
                             <li>
                                 <a
                                 href="/"
-                                aria-label="Our product"
-                                title="Our product"
+                                aria-label="Blog"
+                                title="Blog"
                                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                 >
-                                Features
+                                Blog
                                 </a>
                             </li>
                             <li>
                                 <a
                                 href="/"
-                                aria-label="Product pricing"
-                                title="Product pricing"
+                                aria-label="FAQ"
+                                title="FAQ"
                                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                 >
-                                Pricing
+                                FAQ
                                 </a>
                             </li>
+                              {/* Log in link */}
+                            {
+                                currentUser?.uid ? <><li>
+                                    <Link onClick={handleSignout} 
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                    aria-label="Sign Out"
+                                    title="Sign Out">Sign Out</Link>
+                                    </li>
+                                    <li>
+                                        {currentUser.email}
+
+                                    </li>
+                                    </>
+                                    :  <>
+                                    <li>
+                                    <Link
+                                        to="/login"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                        aria-label="Log-In"
+                                        title="Log-In"
+                                        >
+                                        Log-In
+                                        </Link>
+                                    </li>
+                                   
+                                    <li>
+                                    <Link
+                                        to="/signup"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                        aria-label="Sign up"
+                                        title="Sign up"
+                                        >
+                                        Sign up
+                                        </Link>
+                                    </li>
+                                    </>
+                            }
+                          
                             <li>
                                 <a
                                 href="/"
-                                aria-label="About us"
-                                title="About us"
+                                aria-label="dark/light"
+                                title="Dark/light"
                                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                 >
-                                About us
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                href="/"
-                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-                                aria-label="Sign up"
-                                title="Sign up"
-                                >
-                                Sign up
+                                Dark/Light
                                 </a>
                             </li>
                             </ul>
@@ -175,27 +218,27 @@ const Navber = () => {
                                             title="Our product"
                                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                         >
-                                            Features
+                                            Courses
                                         </a>
                                         </li>
                                         <li>
                                         <a
                                             href="/"
-                                            aria-label="Product pricing"
-                                            title="Product pricing"
+                                            aria-label="Blog"
+                                            title="Blog"
                                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                         >
-                                            Pricing
+                                            Blog
                                         </a>
                                         </li>
                                         <li>
                                         <a
                                             href="/"
-                                            aria-label="About us"
-                                            title="About us"
+                                            aria-label="FAQ"
+                                            title="FAQ"
                                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                                         >
-                                            About us
+                                            FAQ
                                         </a>
                                         </li>
                                         <li>

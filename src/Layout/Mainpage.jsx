@@ -9,7 +9,9 @@ const Mainpage = () => {
         <div>
           
             <Navber></Navber>
+            <div className='h-[900px]'>
             <Outlet></Outlet>
+            </div>
             <Footer></Footer>
 
           
