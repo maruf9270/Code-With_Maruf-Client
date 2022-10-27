@@ -17,7 +17,7 @@ const UserContextApi = ({children}) => {
 
 // Handleing email varification
 const varify = (email) =>{
-  return sendEmailVerification(Auth,email)
+  return sendEmailVerification(Auth.currentUser)
 }
 
 // Handling email and password Registration

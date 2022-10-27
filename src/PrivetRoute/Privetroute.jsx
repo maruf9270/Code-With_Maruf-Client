@@ -17,7 +17,7 @@ const Privetroute = ({children}) => {
         )
     }
     console.log(currentUser);
-   if( currentUser.emailVerified && currentUser?.uid){
+   if(currentUser?.uid){
     return (
          <>
         {children}

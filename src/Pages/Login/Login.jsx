@@ -8,7 +8,7 @@ import { UserContext } from '../../ContextApi/UserContextApi';
 
 const Login = () => {
     // Error toast
-    const notify = () => toast.error("Varify your email before login");
+  
     let location = useLocation()
     let navigate = useNavigate()
     let from = location.state?.from?.pathname || "/";
@@ -36,12 +36,15 @@ const Login = () => {
             SetLoading(false)
             setLoginError('')
             form.reset()
+            console.log(user.user.emailVerified);
             
-            if(user.emailVerified){
+            if(user.user.emailVerified){
                 navigate(from, {replace: true});
+                setLoginError('')
             }
             else{
                 setLoginError('Firebase: Error (auth/Please varify your email before login).')
+                
             }
             
         })

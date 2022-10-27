@@ -7,8 +7,17 @@ import { UserContext } from '../../ContextApi/UserContextApi';
 const Registration = () => {
   
     // Geeting the function fron the context router api
-    const {registerWithEmail,update,SetLoading,Goolge,github,varify} = useContext(UserContext)
-    console.log(useContext(UserContext));
+    const {registerWithEmail,update,SetLoading,Goolge,github,varify,signout} = useContext(UserContext)
+    const handleSignout =() =>{
+        signout()
+        .then(data=>{
+           
+        })
+        .catch(error=>{
+            console.error('sign out',error)
+        })
+    }
+    
     // To navigete to the homwpage after Registration
     let location = useLocation()
     let navigate = useNavigate()
@@ -17,9 +26,9 @@ const Registration = () => {
 
     // Handleing varification 
     const varifyhandle = (email) =>{
-        varify(email)
+        varify()
         .then(data=>{
-            console.log(data);
+            
         })
         .catch(error=>{
             console.error(error)
@@ -34,7 +43,7 @@ const Registration = () => {
         event.preventDefault()
        
 
-        console.log(event.target.confirmPassword.value);
+        
 
         // Geeting the from value
         const email = event.target.email.value;
@@ -50,7 +59,7 @@ const Registration = () => {
         // Checking wheather the password and confirm password is matching
         if(password !== confirmPassword){
             setError("Password didn't match")
-            console.log(error);
+            
             return;
         }
        
@@ -59,11 +68,12 @@ const Registration = () => {
             setError('')
             registerWithEmail(email,password)
             .then(user=>{
-                console.log(user);
+                
                 updateNamePhotoUrl(name,photoUrl)
                 varifyhandle(email)
                 navigate('/mailvarify')
                 SetLoading(false)
+                handleSignout()
                 
             })
             .catch(error=>{
@@ -83,7 +93,7 @@ const Registration = () => {
             SetLoading(true)
             Goolge()
             .then(udata=>{
-                console.log(udata);
+                
                 SetLoading(false)
                 navigate(from, { replace: true });
             })
@@ -98,7 +108,7 @@ const Registration = () => {
             SetLoading(true)
             github()
             .then(user=>{
-                console.log(user);
+               
                 navigate(from, { replace: true });
             })
             .catch(error=>{
@@ -116,7 +126,7 @@ const Registration = () => {
         }
         update(profile)
         .then(user=>{
-            console.log(user);
+            
         })
         .catch(error=>{
             console.error(error)
