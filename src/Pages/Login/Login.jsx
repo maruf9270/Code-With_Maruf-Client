@@ -2,9 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import { UserContext } from '../../ContextApi/UserContextApi';
 
 const Login = () => {
+    // Error toast
+    const notify = () => toast.error("Varify your email before login");
     let location = useLocation()
     let navigate = useNavigate()
     let from = location.state?.from?.pathname || "/";
@@ -14,6 +18,8 @@ const Login = () => {
 
     // Seeting the error handler
     const [loginerror, setLoginError] = useState('')
+
+
 
     // Handling form data
     const handleLogin = (event) =>{
@@ -25,20 +31,25 @@ const Login = () => {
         const password = event.target.password.value;
         Login(email,password)
         .then(user=>{
-            if(!currentUser.emailVerified){
-                navigate('/varify')
-            }
+           
             console.log(user);
             SetLoading(false)
             setLoginError('')
             form.reset()
-            navigate(from, { replace: true });
+            
+            if(user.emailVerified){
+                navigate(from, {replace: true});
+            }
+            else{
+                setLoginError('Firebase: Error (auth/Please varify your email before login).')
+            }
             
         })
         .catch(error=>{
             SetLoading(false)
             console.error(error)
             setLoginError(error.message)
+            console.log(error.message);
 
         })
 

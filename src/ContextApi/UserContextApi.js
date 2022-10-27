@@ -71,7 +71,7 @@ useEffect(()=>{
       setCurrentUser(user)
       
       
-  }
+     }
   SetLoading(false)
    
 

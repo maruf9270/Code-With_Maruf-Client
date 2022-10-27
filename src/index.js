@@ -6,10 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import UserContextApi from './ContextApi/UserContextApi';
 import App from './App';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
    <UserContextApi>
+   
     <App/>
    </UserContextApi>
   </React.StrictMode>
