@@ -72,7 +72,7 @@ const contextValues = {registerWithEmail,
                       SetLoading,
                       signout,
                       Goolge,
-                    github}
+                      github}
     return (
       <UserContext.Provider value={contextValues}>
         {children}

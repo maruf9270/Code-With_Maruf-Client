@@ -33,7 +33,7 @@ const Routes = createBrowserRouter([
             {
                 path:'/checkout/:ID',
                 element:<Privetroute><Checkoutpage></Checkoutpage></Privetroute>,
-                loader:({params})=>fetch(`http://localhost:3150/${params.ID}`)
+                loader:({params})=>fetch(`https://server-side-two.vercel.app/${params.ID}`)
             },
             {
                 path:'/blog',
@@ -46,17 +46,17 @@ const Routes = createBrowserRouter([
             {
                 path:'/courses',
                 element:<Courses></Courses>,
-                // loader: ()=>fetch('https://server-side-two.vercel.app/categories'),
-                loader: ()=>fetch('http://localhost:3150/categories'),
+                loader: ()=>fetch('https://server-side-two.vercel.app/categories'),
+               
                 children:[
                     {
                         index:true,
-                        loader: ()=> fetch('http://localhost:3150/01'),
+                        loader: ()=> fetch('https://server-side-two.vercel.app/01'),
                         element:<SingleCourseDetails></SingleCourseDetails>
                     },
                     {
                         path:'/courses/course/:ID',
-                        loader: ({params})=>fetch(`http://localhost:3150/${params.ID}`)
+                        loader: ({params})=>fetch(`https://server-side-two.vercel.app/${params.ID}`)
                         ,element:<SingleCourseDetails></SingleCourseDetails>
                     }
                 ]
