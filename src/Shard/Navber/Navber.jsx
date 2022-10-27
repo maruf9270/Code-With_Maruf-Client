@@ -152,7 +152,7 @@ const Navber = () => {
                                 <div className="p-5 bg-white border rounded shadow-sm">
                                     <div className="flex items-center justify-between mb-4">
                                     <div>
-                                        <a
+                                        <Link
                                         href="/"
                                         aria-label="Company"
                                         title="Company"
@@ -162,7 +162,7 @@ const Navber = () => {
                                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                                             Code With Maruf
                                         </span>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
                                         <button

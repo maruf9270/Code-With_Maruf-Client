@@ -3,13 +3,9 @@ import { Link, useLoaderData } from 'react-router-dom';
 import {GrDocumentDownload} from 'react-icons/gr'
 import Pdf from "react-to-pdf";
 
-
-const SingleCourseDetails = () => {
+const FullCourse = () => {
     const ref = React.createRef();
     const data = useLoaderData();
-    console.log(data);
-    
-    
     return (
         <div className='w-full lg:w-[95%] bg-primary lg:mx-auto rounded ml-4 px-3 py-10 flex flex-col justify-center' ref={ref}>
         <div className='p-5 mx-auto bg-base-100 inline-block rounded '>
@@ -36,14 +32,19 @@ const SingleCourseDetails = () => {
 
            <div className='my-10'>
             {
-                data.c_details.slice(0,250)
-            }.....
+                data.c_details
+            }
+           </div>
+           <div>
+            {
+                data.c_details_2
+            }
            </div>
            
            <div className='flex justify-end mt-10'>
-             <Link to={`/fulldetails/${data.id}`}>
+             <Link to={`/checkout/${data.id}`}>
              <button className='btn'>
-                Course full Details
+                Primium access
              </button>
              </Link>
            </div>
@@ -52,4 +53,4 @@ const SingleCourseDetails = () => {
     );
 };
 
-export default SingleCourseDetails;
+export default FullCourse;

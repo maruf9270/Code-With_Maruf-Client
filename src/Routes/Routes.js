@@ -3,6 +3,7 @@ import Mainpage from "../Layout/Mainpage";
 import Blogs from "../Pages/Blogs/Blogs";
 import Checkoutpage from "../Pages/CheckoutPage/Checkoutpage";
 import Courses from "../Pages/Courses/Courses";
+import FullCourse from "../Pages/Courses/FullCourse/FullCourse";
 import SingleCourseDetails from "../Pages/Courses/SingleCourseDetails/SingleCourseDetails";
 import Faq from "../Pages/FAQ/Faq";
 import Homepage from "../Pages/Homepage/Homepage";
@@ -48,6 +49,12 @@ const Routes = createBrowserRouter([
                 path:'/mailvarify'
                 ,element:<MailVarify></MailVarify>
             },
+            {
+                path:'/fulldetails/:ID'
+                ,element:<FullCourse></FullCourse>
+                ,loader:({params})=>fetch(`https://server-side-two.vercel.app/${params.ID}`)
+            },
+
             {
                 path:'/courses',
                 element:<Courses></Courses>,
