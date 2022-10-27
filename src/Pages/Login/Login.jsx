@@ -26,17 +26,17 @@ const Login = () => {
         event.preventDefault()
         const form = event.target
         SetLoading(true)
-        console.log(event.target.password.value);
+       
         const email = event.target.email.value;
         const password = event.target.password.value;
         Login(email,password)
         .then(user=>{
            
-            console.log(user);
+          
             SetLoading(false)
             setLoginError('')
             form.reset()
-            console.log(user.user.emailVerified);
+         
             
             if(user.user.emailVerified){
                 navigate(from, {replace: true});
@@ -52,7 +52,7 @@ const Login = () => {
             SetLoading(false)
             console.error(error)
             setLoginError(error.message)
-            console.log(error.message);
+            
 
         })
 
@@ -64,7 +64,7 @@ const Login = () => {
         SetLoading(true)
         Goolge()
         .then(udata=>{
-            console.log(udata);
+           
             SetLoading(false)
             navigate(from, { replace: true });
         })

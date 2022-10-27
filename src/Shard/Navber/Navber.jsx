@@ -12,13 +12,13 @@ const Navber = () => {
     const handleSignout =() =>{
         signout()
         .then(data=>{
-            console.log(data);
+           
         })
         .catch(error=>{
             console.error(error)
         })
     }
-    console.log(currentUser);
+    
 
     return (
         

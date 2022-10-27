@@ -4,7 +4,7 @@ import './SingleCategory.css'
 
 const SIngleCategory = (c) => {
     const data = c.categorie
-    console.log(data);
+
     return (
        <Link to={`/courses/course/${data.id}`}>
            <div className='h-20 lg:w-44 w-20 course-card mb-2 flex bg-base-100'>
