@@ -114,14 +114,15 @@ const Navber = () => {
                             }
                           
                             <li>
-                                <a
-                                href="/"
-                                aria-label="dark/light"
-                                title="Dark/light"
-                                className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
-                                >
-                                Dark/Light
-                                </a>
+                            <label for="Toggle1" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100">
+                                <span>Light</span>
+                                <span className="relative">
+                                    <input id="Toggle1" type="checkbox" className="hidden peer" />
+                                    <div className="w-10 h-6 rounded-full shadow-inner dark:bg-gray-400 peer-checked:dark:bg-violet-400"></div>
+                                    <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto dark:bg-gray-800"></div>
+                                </span>
+                                <span>Dark</span>
+                            </label>
                             </li>
                             </ul>
                             <div className="lg:hidden">
@@ -186,7 +187,7 @@ const Navber = () => {
                                             to='/courses'
                                             aria-label="Our Courses"
                                             title="Courses"
-                                            className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
+                                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-purple-400"
                                         >
                                             Courses
                                         </Link>
@@ -196,7 +197,7 @@ const Navber = () => {
                                             to='/blog'
                                             aria-label="Our product"
                                             title="Our product"
-                                            className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
+                                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-purple-400"
                                         >
                                             Blog
                                         </Link>
@@ -206,7 +207,7 @@ const Navber = () => {
                                           to='/faq'
                                             aria-label="Blog"
                                             title="Blog"
-                                            className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
+                                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-purple-400"
                                         >
                                            FAQ
                                         </Link>
@@ -223,7 +224,7 @@ const Navber = () => {
                                        
 
                                     <Link onClick={handleSignout} 
-                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                     aria-label="Sign Out"
                                     title="Sign Out">Sign Out</Link>
                                     </li>
@@ -233,7 +234,7 @@ const Navber = () => {
                                     <li>
                                     <Link
                                         to="/login"
-                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                         aria-label="Log-In"
                                         title="Log-In"
                                         >
@@ -244,7 +245,7 @@ const Navber = () => {
                                     <li>
                                     <Link
                                         to="/signup"
-                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                         aria-label="Sign up"
                                         title="Sign up"
                                         >
