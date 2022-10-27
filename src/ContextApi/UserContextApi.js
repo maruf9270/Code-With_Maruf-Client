@@ -67,8 +67,9 @@ useEffect(()=>{
   
   const unsubscribe = onAuthStateChanged(Auth,(user)=>{
    
-    if(user === null || user.emailVerified){
+    if(user === null || user.emailVerified || user.providerData[0].providerId === 'github.com'){
       setCurrentUser(user)
+      
       
   }
   SetLoading(false)
