@@ -27,21 +27,26 @@ const Routes = createBrowserRouter([
                 path:'/signup',
                 element:<Registration></Registration>
             },
+            
             {
-                path:'/checkout',
-                element:<Privetroute><Checkoutpage></Checkoutpage></Privetroute>
+                path:'/checkout/:ID',
+                element:<Privetroute><Checkoutpage></Checkoutpage></Privetroute>,
+                loader:({params})=>fetch(`http://localhost:3150/${params.ID}`)
             },
             {
                 path:'/courses',
                 element:<Courses></Courses>,
-                loader: ()=>fetch('https://server-side-two.vercel.app/categories'),
+                // loader: ()=>fetch('https://server-side-two.vercel.app/categories'),
+                loader: ()=>fetch('http://localhost:3150/categories'),
                 children:[
                     {
                         index:true,
+                        loader: ()=> fetch('http://localhost:3150/01'),
                         element:<SingleCourseDetails></SingleCourseDetails>
                     },
                     {
-                        path:'/courses/course/:ID'
+                        path:'/courses/course/:ID',
+                        loader: ({params})=>fetch(`http://localhost:3150/${params.ID}`)
                         ,element:<SingleCourseDetails></SingleCourseDetails>
                     }
                 ]

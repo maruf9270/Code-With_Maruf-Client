@@ -24,7 +24,7 @@ const Navber = () => {
         
         <div>
           {/* Navber section starts frmo here */}
-                    <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+                    <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-primary my-6 rounded-md">
                         <div className="relative flex items-center justify-between">
                             <Link
                             to='/'
@@ -32,8 +32,8 @@ const Navber = () => {
                             title="Code With Maruf"
                             className="inline-flex items-center"
                             >
-                           <img src={Logo} alt=""  className='w-[30%]'/>
-                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                           <img src={Logo} alt=""  className='w-[20%] rounded-full'/>
+                            <span className="ml-2 text-xl font-bold tracking-wide text-white uppercase">
                                 Code With Maruf
                             </span>
                             </Link>
@@ -44,7 +44,7 @@ const Navber = () => {
                                 to='/courses'
                                 aria-label="Our product"
                                 title="Our product"
-                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
                                 >
                                 Courses
                                 </Link>
@@ -54,7 +54,7 @@ const Navber = () => {
                                to='/blog'
                                 aria-label="Blog"
                                 title="Blog"
-                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
                                 >
                                 Blog
                                 </Link>
@@ -64,7 +64,7 @@ const Navber = () => {
                                 to='/faq'
                                 aria-label="FAQ"
                                 title="FAQ"
-                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
                                 >
                                 FAQ
                                 </Link>
@@ -118,7 +118,7 @@ const Navber = () => {
                                 href="/"
                                 aria-label="dark/light"
                                 title="Dark/light"
-                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
                                 >
                                 Dark/Light
                                 </a>
@@ -186,7 +186,7 @@ const Navber = () => {
                                             to='/courses'
                                             aria-label="Our Courses"
                                             title="Courses"
-                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                            className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
                                         >
                                             Courses
                                         </Link>
@@ -196,7 +196,7 @@ const Navber = () => {
                                             to='/blog'
                                             aria-label="Our product"
                                             title="Our product"
-                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                            className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
                                         >
                                             Blog
                                         </Link>
@@ -206,7 +206,7 @@ const Navber = () => {
                                           to='/faq'
                                             aria-label="Blog"
                                             title="Blog"
-                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                                            className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-purple-400"
                                         >
                                            FAQ
                                         </Link>
