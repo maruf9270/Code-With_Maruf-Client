@@ -9,7 +9,7 @@ const Login = () => {
     let navigate = useNavigate()
     let from = location.state?.from?.pathname || "/";
     // Geeting the function from UserContext
-    const {Login,SetLoading,Goolge,github} = useContext(UserContext)
+    const {Login,SetLoading,Goolge,github,currentUser} = useContext(UserContext)
 
 
     // Seeting the error handler
@@ -25,6 +25,9 @@ const Login = () => {
         const password = event.target.password.value;
         Login(email,password)
         .then(user=>{
+            if(!currentUser.emailVerified){
+                navigate('/varify')
+            }
             console.log(user);
             SetLoading(false)
             setLoginError('')

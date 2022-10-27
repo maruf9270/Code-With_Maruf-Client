@@ -8,7 +8,7 @@ import { UserContext } from '../ContextApi/UserContextApi';
 const Privetroute = ({children}) => {
     let location = useLocation();
 
-    const {currentUser,loading,SetLoading} = useContext(UserContext)
+    const {currentUser,loading} = useContext(UserContext)
 
 
     if(loading){
@@ -17,7 +17,7 @@ const Privetroute = ({children}) => {
         )
     }
     console.log(currentUser);
-   if( currentUser && currentUser?.uid){
+   if( currentUser.emailVerified && currentUser?.uid){
     return (
          <>
         {children}

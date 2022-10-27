@@ -7,13 +7,25 @@ import { UserContext } from '../../ContextApi/UserContextApi';
 const Registration = () => {
   
     // Geeting the function fron the context router api
-    const {registerWithEmail,update,SetLoading,Goolge,github} = useContext(UserContext)
+    const {registerWithEmail,update,SetLoading,Goolge,github,varify} = useContext(UserContext)
     console.log(useContext(UserContext));
     // To navigete to the homwpage after Registration
     let location = useLocation()
     let navigate = useNavigate()
     let from = location.state?.from?.pathname || "/";
 
+
+    // Handleing varification 
+    const varifyhandle = (email) =>{
+        varify(email)
+        .then(data=>{
+            console.log(data);
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+
+    }
 
     // declering state for error 
     const [error, setError] = useState()
@@ -49,11 +61,14 @@ const Registration = () => {
             .then(user=>{
                 console.log(user);
                 updateNamePhotoUrl(name,photoUrl)
+                varifyhandle(email)
+                navigate('/mailvarify')
                 SetLoading(false)
-                navigate(from, { replace: true });
+                
             })
             .catch(error=>{
                 SetLoading(false)
+                setError(error.message)
                 console.error(error)
             })
         }

@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import React from 'react';
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, sendEmailVerification } from 'firebase/auth'
 import app from "../Firebase/Firebase.config";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -14,6 +14,11 @@ const Auth = getAuth(app)
 
 
 const UserContextApi = ({children}) => {
+
+// Handleing email varification
+const varify = (email) =>{
+  return sendEmailVerification(Auth,email)
+}
 
 // Handling email and password Registration
 const registerWithEmail = (email,password)=>{
@@ -61,8 +66,13 @@ const signout=()=>{
 useEffect(()=>{
   
   const unsubscribe = onAuthStateChanged(Auth,(user)=>{
-    setCurrentUser(user)
-    SetLoading(false)
+   
+    if(user === null || user.emailVerified){
+      setCurrentUser(user)
+      
+  }
+  SetLoading(false)
+   
 
   })
   return ()=> unsubscribe;
@@ -77,7 +87,8 @@ const contextValues = {registerWithEmail,
                       SetLoading,
                       signout,
                       Goolge,
-                      github}
+                      github,
+                      varify}
     return (
       <UserContext.Provider value={contextValues}>
         {children}

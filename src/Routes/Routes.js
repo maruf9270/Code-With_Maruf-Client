@@ -7,6 +7,7 @@ import SingleCourseDetails from "../Pages/Courses/SingleCourseDetails/SingleCour
 import Faq from "../Pages/FAQ/Faq";
 import Homepage from "../Pages/Homepage/Homepage";
 import Login from "../Pages/Login/Login";
+import MailVarify from "../Pages/MailVarify/MailVarify";
 import Registration from "../Pages/Registration/Registration";
 import Privetroute from "../PrivetRoute/Privetroute";
 import Errorpage from "../Shard/ErrorPage/Errorpage";
@@ -42,6 +43,10 @@ const Routes = createBrowserRouter([
             {
                 path:'/faq',
                 element:<Faq></Faq>
+            },
+            {
+                path:'/mailvarify'
+                ,element:<MailVarify></MailVarify>
             },
             {
                 path:'/courses',
