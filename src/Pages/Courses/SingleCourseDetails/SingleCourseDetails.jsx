@@ -7,7 +7,7 @@ import Pdf from "react-to-pdf";
 const SingleCourseDetails = () => {
     const ref = React.createRef();
     const data = useLoaderData();
-    console.log(data);
+
     
     
     return (

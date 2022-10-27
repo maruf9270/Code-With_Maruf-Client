@@ -44,7 +44,7 @@ const FullCourse = () => {
            <div className='flex justify-end mt-10'>
              <Link to={`/checkout/${data.id}`}>
              <button className='btn'>
-                Primium access
+             Get premium access
              </button>
              </Link>
            </div>

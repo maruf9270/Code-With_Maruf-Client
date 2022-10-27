@@ -8,12 +8,22 @@ import { UserContext } from '../../ContextApi/UserContextApi';
 
 const Login = () => {
     // Error toast
+   
   
     let location = useLocation()
     let navigate = useNavigate()
     let from = location.state?.from?.pathname || "/";
     // Geeting the function from UserContext
-    const {Login,SetLoading,Goolge,github,currentUser} = useContext(UserContext)
+    const {Login,SetLoading,Goolge,github,signout} = useContext(UserContext)
+    const handleSignout =() =>{
+        signout()
+        .then(data=>{
+           
+        })
+        .catch(error=>{
+            console.error('sign out',error)
+        })
+    }
 
 
     // Seeting the error handler
@@ -44,6 +54,7 @@ const Login = () => {
             }
             else{
                 setLoginError('Firebase: Error (auth/Please varify your email before login).')
+                handleSignout();
                 
             }
             
