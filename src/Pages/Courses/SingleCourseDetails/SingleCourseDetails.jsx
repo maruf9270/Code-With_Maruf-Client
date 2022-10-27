@@ -1,18 +1,31 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import {GrDocumentDownload} from 'react-icons/gr'
+import Pdf from "react-to-pdf";
+
 
 const SingleCourseDetails = () => {
+    const ref = React.createRef();
     const data = useLoaderData();
     console.log(data);
     
+    
     return (
-        <div className='w-full lg:w-[95%] bg-primary lg:mx-auto rounded ml-4 px-3 py-10 flex flex-col justify-center'>
-           <div className='p-5 mx-auto bg-base-100 inline-block rounded'>
-           <h3 className='text-white font-bold text-3xl'>
+        <div className='w-full lg:w-[95%] bg-primary lg:mx-auto rounded ml-4 px-3 py-10 flex flex-col justify-center' ref={ref}>
+        <div className='p-5 mx-auto bg-base-100 inline-block rounded '>
+          <div className='flex items-center justify-center'>
+          <h3 className='text-white font-bold text-3xl mr-4'>
            {
                 data.c_name
             }
+           
            </h3>
+           
+           <Pdf targetRef={ref} filename={`${data.c_name}.pdf`}>
+                {({ toPdf }) => <button onClick={toPdf} className='text-white bg-white '><GrDocumentDownload></GrDocumentDownload></button>}
+           </Pdf>
+           
+          </div>
 
            </div>
 
