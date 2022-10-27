@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../ContextApi/UserContextApi';
 
 const Registration = () => {
@@ -9,6 +9,12 @@ const Registration = () => {
     // Geeting the function fron the context router api
     const {registerWithEmail,update,SetLoading,Goolge,github} = useContext(UserContext)
     console.log(useContext(UserContext));
+    // To navigete to the homwpage after Registration
+    let location = useLocation()
+    let navigate = useNavigate()
+    let from = location.state?.from?.pathname || "/";
+
+
     // declering state for error 
     const [error, setError] = useState()
     const handleSubmit =(event) =>{
@@ -44,6 +50,7 @@ const Registration = () => {
                 console.log(user);
                 updateNamePhotoUrl(name,photoUrl)
                 SetLoading(false)
+                navigate(from, { replace: true });
             })
             .catch(error=>{
                 SetLoading(false)
@@ -63,6 +70,7 @@ const Registration = () => {
             .then(udata=>{
                 console.log(udata);
                 SetLoading(false)
+                navigate(from, { replace: true });
             })
             .catch(error=>{
                 console.error(error)
@@ -76,6 +84,7 @@ const Registration = () => {
             github()
             .then(user=>{
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(error=>{
                 console.error(error)

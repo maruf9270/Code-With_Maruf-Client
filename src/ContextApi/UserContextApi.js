@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import React from 'react';
-import { getAuth, createUserWithEmailAndPassword, updateCurrentUser, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth'
 import app from "../Firebase/Firebase.config";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -17,6 +17,7 @@ const UserContextApi = ({children}) => {
 
 // Handling email and password Registration
 const registerWithEmail = (email,password)=>{
+  SetLoading(true)
  return createUserWithEmailAndPassword(Auth,email,password)
 
 }
@@ -24,12 +25,14 @@ const registerWithEmail = (email,password)=>{
 // Handleing github sign in
 const gitprovider = new GithubAuthProvider()
 const github=()=>{
+  SetLoading(true)
   return signInWithPopup(Auth,gitprovider)
 }
 
 // Handleing google sign in
 const provider = new GoogleAuthProvider()
 const Goolge = () =>{
+  SetLoading(true)
   return signInWithPopup(Auth,provider)
 }
 
@@ -40,6 +43,7 @@ const Login = (email,password)=>{
 
 // updating user name and photo url
 const update = (profile)=>{
+  SetLoading(true)
  return updateProfile(Auth.currentUser,profile)
 }
 
@@ -49,6 +53,7 @@ const [loading,SetLoading] = useState(true)
 const [currentUser,setCurrentUser] = useState(null)
 // Signing out from the current user
 const signout=()=>{
+  SetLoading(true)
   return signOut(Auth);
   
 }
